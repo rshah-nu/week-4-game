@@ -1,5 +1,7 @@
 var wins = 0;
+$("#wins").text("Wins: " + wins);
 var losses = 0;
+$("#losses").text("Losses: " + losses);
 var currentNumber = 0; 
 var randomNumber = 0;
 crystalValueOne = 0;
@@ -11,7 +13,7 @@ startGame();
 
 function startGame(){
     randomNumber = generateRandomNumber(120, 19);
-    $("#randomNumber").html(randomNumber);
+    $("#randomNumber").html("<h1>" + randomNumber + "</h1>");
     crystalValueOne = generateRandomNumber(12, 1);
     crystalValueTwo = generateRandomNumber(12, 1);
     crystalValueThree = generateRandomNumber(12, 1);
@@ -51,10 +53,16 @@ $("#crystalFour").on("click", function() {
 function checkScore(){
     if (currentNumber == randomNumber) {
         console.log ("You Win!");
+        wins++;
+        $("#wins").text("Wins: " + wins);
+        $("#status").html("You Win!");
         startGame();
     }
     else if (currentNumber > randomNumber) {
         console.log("You lose!");
+        losses++;
+        $("#losses").text("Losses: " + losses);
+        $("#status").html("You Lose!");
         startGame();
     }
 };
